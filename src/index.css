@@ -1,0 +1,332 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+@import "tailwindcss";
+
+:root {
+  /* Exact Colors Extracted from Reference Image */
+  --color-bg-dark: #161210;         /* Deep Espresso Charcoal Background */
+  --color-bg-card: #211a16;         /* Dark Mocha Card Background */
+  --color-bg-brown: #2b221c;        /* Muted Warm Dark Brown */
+  --color-accent-cream: #d8c7b5;    /* Warm Oat / Cream Accent */
+  --color-accent-bronze: #b89674;   /* Warm Tan Bronze */
+  --color-text-heading: #f5efe6;    /* Crisp Warm Cream White */
+  --color-text-body: #9c8e82;       /* Warm Muted Taupe Body Text */
+  --color-border-warm: rgba(184, 150, 116, 0.25);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+html {
+  background-color: #161210;
+  color: #f5efe6;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background-color: #161210;
+  color: #f5efe6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Organic Topographical Relief Wave Texture Blended & Prominently Visible */
+.luxury-texture-bg {
+  background-color: #161210;
+  background-image: 
+    radial-gradient(circle at 50% 30%, rgba(43, 34, 28, 0.5) 0%, rgba(16, 13, 12, 0.92) 100%),
+    url('/wave-texture.jpg');
+  background-repeat: repeat;
+  background-size: 750px auto;
+  background-blend-mode: overlay;
+  background-attachment: fixed;
+}
+
+.luxury-pattern-overlay {
+  position: relative;
+}
+
+.luxury-pattern-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('/wave-texture.jpg');
+  background-repeat: repeat;
+  background-size: 750px auto;
+  opacity: 0.38;
+  mix-blend-mode: overlay;
+  filter: contrast(130%) brightness(0.85);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Custom Typography Classes */
+.font-serif-header {
+  font-family: 'Playfair Display', 'Cormorant Garamond', serif;
+}
+
+.font-cinzel {
+  font-family: 'Cormorant Garamond', 'Playfair Display', serif;
+}
+
+.font-sans-body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Muted Bronze & Oat Gradients */
+.bronze-gradient-text {
+  background: linear-gradient(135deg, #f5efe6 0%, #d8c7b5 50%, #b89674 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.bronze-gradient-bg {
+  background: linear-gradient(135deg, #e2d4c3 0%, #d8c7b5 50%, #b89674 100%);
+}
+
+.bronze-border-glow {
+  box-shadow: 0 0 20px rgba(184, 150, 116, 0.2);
+  border-color: rgba(184, 150, 116, 0.4);
+}
+
+.espresso-card-hover {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.espresso-card-hover:hover {
+  transform: translateY(-6px);
+  border-color: rgba(184, 150, 116, 0.6);
+  box-shadow: 0 16px 36px -12px rgba(22, 18, 16, 0.9);
+}
+
+/* Glass Panels with Luxury Damask Texture Accent */
+.glass-panel {
+  background: linear-gradient(135deg, rgba(245, 239, 230, 0.03) 0%, rgba(33, 26, 22, 0.4) 100%);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.6), inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+}
+
+.glass-panel-dark {
+  background: linear-gradient(135deg, rgba(22, 18, 16, 0.7) 0%, rgba(10, 8, 7, 0.9) 100%);
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
+  border: 1px solid rgba(184, 150, 116, 0.15);
+  border-top: 1px solid rgba(184, 150, 116, 0.3);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.8), inset 0 1px 0 0 rgba(184, 150, 116, 0.1);
+}
+
+/* Pill Button Styling */
+.btn-pill-outline {
+  border: 1px solid rgba(184, 150, 116, 0.4);
+  background-color: transparent;
+  color: #f5efe6;
+  border-radius: 9999px;
+  padding: 0.6rem 1.5rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.btn-pill-outline:hover {
+  border-color: #d8c7b5;
+  background-color: rgba(216, 199, 181, 0.12);
+  color: #ffffff;
+}
+
+.btn-pill-filled {
+  background-color: #d8c7b5;
+  color: #161210;
+  border-radius: 9999px;
+  padding: 0.6rem 1.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.btn-pill-filled:hover {
+  background-color: #ffffff;
+  box-shadow: 0 0 20px rgba(216, 199, 181, 0.4);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #161210;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2b221c;
+  border: 1px solid #b89674;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #b89674;
+}
+
+/* Custom Animated Cursor */
+.custom-cursor-dot {
+  pointer-events: none;
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  background-color: #d8c7b5;
+  border-radius: 50%;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.2s ease, transform 0.1s ease;
+}
+
+.custom-cursor-outline {
+  pointer-events: none;
+  position: fixed;
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(216, 199, 181, 0.5);
+  border-radius: 50%;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s ease, height 0.3s ease, background-color 0.3s ease;
+}
+
+/* ==================== POPUP & TRANSITION ANIMATION KEYFRAMES ==================== */
+
+@keyframes popupScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.9) translateY(24px);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.02) translateY(-4px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes fadeInOverlay {
+  0% {
+    opacity: 0;
+    backdrop-filter: blur(0px);
+  }
+  100% {
+    opacity: 1;
+    backdrop-filter: blur(16px);
+  }
+}
+
+@keyframes slideInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes textShimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes shellPulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(184, 150, 116, 0.15), inset 0 0 10px rgba(184, 150, 116, 0.05);
+    border-color: rgba(184, 150, 116, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 35px rgba(184, 150, 116, 0.35), inset 0 0 15px rgba(184, 150, 116, 0.15);
+    border-color: rgba(216, 199, 181, 0.6);
+  }
+}
+
+/* Helper Utility Animation Classes */
+.animate-popup {
+  animation: popupScale 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-overlay-fade {
+  animation: fadeInOverlay 0.4s ease-out forwards;
+}
+
+.animate-slide-left {
+  animation: slideInLeft 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-slide-right {
+  animation: slideInRight 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-slide-up {
+  animation: slideInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.shell-pulse {
+  animation: shellPulseGlow 4s infinite ease-in-out;
+}
+
+.text-gold-shimmer {
+  background: linear-gradient(90deg, #f5efe6 0%, #d8c7b5 30%, #ffffff 50%, #d8c7b5 70%, #b89674 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textShimmer 6s linear infinite;
+}
+
+/* Glass Shell Container Styling for Maximum Legibility Over Canvas Frames */
+.shell-container {
+  background: linear-gradient(135deg, rgba(22, 18, 16, 0.85) 0%, rgba(22, 18, 16, 0.96) 100%);
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
+  border: 1px solid rgba(184, 150, 116, 0.25);
+  border-top: 1px solid rgba(184, 150, 116, 0.5);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), inset 0 1px 0 0 rgba(216, 199, 181, 0.1);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.shell-container:hover {
+  border-color: rgba(216, 199, 181, 0.6);
+  border-top-color: rgba(216, 199, 181, 0.9);
+  box-shadow: 0 35px 80px rgba(184, 150, 116, 0.25), inset 0 1px 0 0 rgba(216, 199, 181, 0.3);
+  transform: translateY(-4px);
+}
+
