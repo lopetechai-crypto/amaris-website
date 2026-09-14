@@ -201,6 +201,10 @@ export default function HeroSection({ onOpenBooking }) {
   const phase6Op = phaseOpacity(0.75, 0.875);
   const phase7Op = phaseOpacity(0.875, 1.01);
 
+  const mobPhase1Op = phaseOpacity(0, 0.33);
+  const mobPhase2Op = phaseOpacity(0.33, 0.66);
+  const mobPhase3Op = phaseOpacity(0.66, 1.01);
+
   const materials = [
     { title: "ITALIAN MARBLE", desc: "Bottochino & Statuario Stone" },
     { title: "GERMAN GLAZING", desc: "Double-Glazed Acoustic Glass" },
@@ -219,7 +223,7 @@ export default function HeroSection({ onOpenBooking }) {
 
     if (direction === 'center') {
       baseTranslateX = '-50%';
-      baseTranslateY = '-50%';
+      baseTranslateY = isMobile ? '0px' : '-50%';
       yOffset = (1 - opacity) * 30; // override yOffset for center
     } else if (direction === 'left' || direction === 'right') {
       baseTranslateY = isMobile ? '0px' : '-50%';
@@ -242,7 +246,7 @@ export default function HeroSection({ onOpenBooking }) {
   const endFadeOpacity = scrollProgress > 0.95 ? Math.max(0, 1 - ((scrollProgress - 0.95) / 0.05)) : 1;
 
   return (
-    <div ref={containerRef} className="relative h-[400vh] bg-[#161210]">
+    <div ref={containerRef} className="relative h-[400vh] luxury-texture-bg">
       {/* Sticky Viewport */}
       <div 
         className="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center"
@@ -255,14 +259,53 @@ export default function HeroSection({ onOpenBooking }) {
           style={{ imageRendering: 'auto' }}
         />
 
-        {/* Smokey Overlays */}
-        <div className="absolute top-0 left-0 right-0 h-48 sm:h-64 bg-gradient-to-b from-[#161210] via-[#161210]/80 via-[#161210]/40 to-transparent z-5 pointer-events-none backdrop-blur-[1px]" />
-        <div className="absolute bottom-0 left-0 right-0 h-48 sm:h-64 bg-gradient-to-t from-[#161210] via-[#161210]/90 via-[#161210]/50 to-transparent z-5 pointer-events-none backdrop-blur-[1px]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-[#161210]/30 to-[#161210]/95 z-1 pointer-events-none" />
+        {/* ===== MOBILE TEXT PHASES ===== */}
+        <div
+          className="absolute bottom-[5%] left-4 right-4 z-20 text-center sm:hidden flex flex-col items-center justify-center"
+          style={{ opacity: mobPhase1Op, transform: `translateY(${(1 - mobPhase1Op) * 20}px)`, pointerEvents: mobPhase1Op > 0.1 ? 'auto' : 'none' }}
+        >
+          <h2 className="font-serif-header text-2xl text-[#f5efe6] font-light uppercase drop-shadow-lg mb-2">
+            DESIGN THE WAY <span className="font-normal italic lowercase">you live.</span>
+          </h2>
+          <p className="font-sans-body text-xs text-[#e2d6c7] font-normal leading-relaxed drop-shadow-md">
+            Residences shaped by natural slope topography and modern elegance in Financial District.
+          </p>
+        </div>
+
+        <div
+          className="absolute bottom-[5%] left-4 right-4 z-20 text-center sm:hidden flex flex-col items-center justify-center"
+          style={{ opacity: mobPhase2Op, transform: `translateY(${(1 - mobPhase2Op) * 20}px)`, pointerEvents: mobPhase2Op > 0.1 ? 'auto' : 'none' }}
+        >
+          <h2 className="font-serif-header text-2xl text-[#f5efe6] font-light uppercase drop-shadow-lg mb-2">
+            8-METRE NATURAL SLOPE
+          </h2>
+          <p className="font-sans-body text-xs text-[#e2d6c7] font-normal leading-relaxed drop-shadow-md">
+            Two iconic towers rise in quiet distinction, giving every residence multi-tiered elevated views.
+          </p>
+        </div>
+
+        <div
+          className="absolute bottom-[5%] left-4 right-4 z-20 text-center sm:hidden flex flex-col items-center justify-center"
+          style={{ opacity: mobPhase3Op, transform: `translateY(${(1 - mobPhase3Op) * 20}px)`, pointerEvents: mobPhase3Op > 0.1 ? 'auto' : 'none' }}
+        >
+          <h2 className="font-serif-header text-2xl text-[#f5efe6] font-light uppercase drop-shadow-lg mb-2">
+            45,000 SQ.FT CLUBHOUSE
+          </h2>
+          <p className="font-sans-body text-xs text-[#e2d6c7] font-normal leading-relaxed drop-shadow-md mb-4">
+            An expansive wellness sanctuary with a sky pool, fitness center, and private dining suites.
+          </p>
+          <button
+            onClick={onOpenBooking}
+            className="btn-pill-filled flex items-center gap-2 text-[10px] shadow-xl"
+          >
+            <span>Schedule Site Tour</span>
+            <ArrowRight className="w-3 h-3" />
+          </button>
+        </div>
 
         {/* ===== PHASE 1: HERO INTRO ===== */}
         <div
-          className="absolute top-1/2 left-1/2 z-10 max-w-3xl w-full px-4 sm:px-6 text-center"
+          className="hidden sm:block absolute top-[8%] sm:top-1/2 left-1/2 z-10 max-w-3xl w-full px-4 sm:px-6 text-center"
           style={phaseStyle(phase1Op, 'center')}
         >
           <div className="shell-container p-6 sm:p-10 rounded-3xl space-y-4 border border-[#b89674]/50 bg-[#161210]/92 backdrop-blur-2xl shadow-2xl shell-pulse">
@@ -289,7 +332,7 @@ export default function HeroSection({ onOpenBooking }) {
 
         {/* ===== PHASE 2: 8-METRE SLOPE (LEFT) ===== */}
         <div
-          className="absolute left-4 right-4 sm:right-auto sm:left-10 md:left-16 bottom-[12%] sm:bottom-auto sm:top-1/2 z-20 sm:max-w-md md:max-w-lg w-auto sm:w-full"
+          className="hidden sm:block absolute left-4 right-4 sm:right-auto sm:left-10 md:left-16 bottom-[12%] sm:bottom-auto sm:top-1/2 z-20 sm:max-w-md md:max-w-lg w-auto sm:w-full"
           style={phaseStyle(phase2Op, 'left')}
         >
           <div className="shell-container p-6 sm:p-8 rounded-3xl space-y-4 bg-[#161210]/92 backdrop-blur-2xl border border-[#b89674]/50 shadow-2xl">
@@ -315,7 +358,7 @@ export default function HeroSection({ onOpenBooking }) {
 
         {/* ===== PHASE 3: SKY CLUBHOUSE (RIGHT) ===== */}
         <div
-          className="absolute left-4 right-4 sm:left-auto sm:right-10 md:right-16 bottom-[12%] sm:bottom-auto sm:top-1/2 z-20 sm:max-w-md md:max-w-lg w-auto sm:w-full"
+          className="hidden sm:block absolute left-4 right-4 sm:left-auto sm:right-10 md:right-16 bottom-[12%] sm:bottom-auto sm:top-1/2 z-20 sm:max-w-md md:max-w-lg w-auto sm:w-full"
           style={phaseStyle(phase3Op, 'right')}
         >
           <div className="shell-container p-6 sm:p-8 rounded-3xl space-y-4 bg-[#161210]/92 backdrop-blur-2xl border border-[#b89674]/50 shadow-2xl">
@@ -341,7 +384,7 @@ export default function HeroSection({ onOpenBooking }) {
 
         {/* ===== PHASE 4: DESIGNED FOR MODERN LIVING (CENTER) ===== */}
         <div
-          className="absolute top-1/2 left-1/2 z-10 max-w-3xl w-full px-4 sm:px-6 text-center"
+          className="hidden sm:block absolute top-[8%] sm:top-1/2 left-1/2 z-10 max-w-3xl w-full px-4 sm:px-6 text-center"
           style={phaseStyle(phase4Op, 'center')}
         >
           <div className="shell-container p-6 sm:p-10 rounded-3xl space-y-4 border border-[#b89674]/50 bg-[#161210]/92 backdrop-blur-2xl shadow-2xl shell-pulse">
@@ -380,7 +423,7 @@ export default function HeroSection({ onOpenBooking }) {
 
         {/* ===== PHASE 5: HARMONIOUS TOPOGRAPHY (LEFT) ===== */}
         <div
-          className="absolute left-4 right-4 sm:right-auto sm:left-10 md:left-16 bottom-[12%] sm:bottom-auto sm:top-1/2 z-20 sm:max-w-md md:max-w-lg w-auto sm:w-full"
+          className="hidden sm:block absolute left-4 right-4 sm:right-auto sm:left-10 md:left-16 bottom-[12%] sm:bottom-auto sm:top-1/2 z-20 sm:max-w-md md:max-w-lg w-auto sm:w-full"
           style={phaseStyle(phase5Op, 'left')}
         >
           <div className="shell-container p-6 sm:p-8 rounded-3xl space-y-4 bg-[#161210]/92 backdrop-blur-2xl border border-[#b89674]/50 shadow-2xl">
@@ -406,7 +449,7 @@ export default function HeroSection({ onOpenBooking }) {
 
         {/* ===== PHASE 6: MATERIALS MATTER (RIGHT) ===== */}
         <div
-          className="absolute left-4 right-4 sm:left-auto sm:right-10 md:right-16 bottom-[12%] sm:bottom-auto sm:top-1/2 z-20 sm:max-w-md md:max-w-lg w-auto sm:w-full"
+          className="hidden sm:block absolute left-4 right-4 sm:left-auto sm:right-10 md:right-16 bottom-[12%] sm:bottom-auto sm:top-1/2 z-20 sm:max-w-md md:max-w-lg w-auto sm:w-full"
           style={phaseStyle(phase6Op, 'right')}
         >
           <div className="shell-container p-6 sm:p-8 rounded-3xl space-y-4 bg-[#161210]/92 backdrop-blur-2xl border border-[#b89674]/50 shadow-2xl">
@@ -435,7 +478,7 @@ export default function HeroSection({ onOpenBooking }) {
 
         {/* ===== PHASE 7: SELECT FEW (BOTTOM) ===== */}
         <div
-          className="absolute bottom-10 z-20 max-w-2xl w-full px-4 sm:px-6 text-center"
+          className="hidden sm:block absolute bottom-10 z-20 max-w-2xl w-full px-4 sm:px-6 text-center"
           style={phaseStyle(phase7Op, 'bottom')}
         >
           <div className="shell-container p-6 sm:p-8 rounded-3xl space-y-4 bg-[#161210]/92 backdrop-blur-2xl border border-[#b89674]/50 shadow-2xl">
