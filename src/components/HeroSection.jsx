@@ -54,7 +54,7 @@ export default function HeroSection({ onOpenBooking }) {
     // Load first 15 frames immediately for initial render
     for (let i = 1; i <= 15; i++) {
       const img = new Image();
-      img.src = `/hero_frames/ezgif-frame-${String(i).padStart(3, '0')}.jpg`;
+      img.src = `${import.meta.env.BASE_URL}hero_frames/ezgif-frame-${String(i).padStart(3, '0')}.jpg`;
       loadSeq1.push(img);
     }
     seq1ImagesRef.current = loadSeq1;
@@ -64,12 +64,12 @@ export default function HeroSection({ onOpenBooking }) {
     const timer = setTimeout(() => {
       for (let i = 16; i <= TOTAL_FRAMES_SEQ1; i++) {
         const img = new Image();
-        img.src = `/hero_frames/ezgif-frame-${String(i).padStart(3, '0')}.jpg`;
+        img.src = `${import.meta.env.BASE_URL}hero_frames/ezgif-frame-${String(i).padStart(3, '0')}.jpg`;
         loadSeq1.push(img);
       }
       for (let i = 1; i <= TOTAL_FRAMES_SEQ2; i++) {
         const img = new Image();
-        img.src = `/seq2_frames/ezgif-frame-${String(i).padStart(3, '0')}.jpg`;
+        img.src = `${import.meta.env.BASE_URL}seq2_frames/ezgif-frame-${String(i).padStart(3, '0')}.jpg`;
         loadSeq2.push(img);
       }
       seq2ImagesRef.current = loadSeq2;

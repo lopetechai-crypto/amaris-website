@@ -18,7 +18,7 @@ export default function KurraLogo({ variant = 'gold', size = 'normal', showText 
   return (
     <div className={`inline-flex items-center gap-2 group ${className}`}>
       <img
-        src="/kurra_logo.png"
+        src={`${import.meta.env.BASE_URL}kurra_logo.png`}
         alt="Kurra Infra Logo"
         className={`${heightClass} w-auto object-contain transition-transform duration-300 group-hover:scale-105 brightness-110 drop-shadow-md`}
         style={{ mixBlendMode: 'lighten' }}

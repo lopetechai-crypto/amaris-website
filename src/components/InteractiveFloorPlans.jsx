@@ -47,7 +47,7 @@ export default function InteractiveFloorPlans({ onOpenBooking }) {
     // Load first 15 frames immediately for initial render
     for (let i = 1; i <= 15; i++) {
       const img = new Image();
-      img.src = `/floorplan_frames/ezgif-frame-${String(i).padStart(3, '0')}.jpg`;
+      img.src = `${import.meta.env.BASE_URL}floorplan_frames/ezgif-frame-${String(i).padStart(3, '0')}.jpg`;
       loaded.push(img);
     }
     imagesRef.current = loaded;
@@ -57,7 +57,7 @@ export default function InteractiveFloorPlans({ onOpenBooking }) {
     const timer = setTimeout(() => {
       for (let i = 16; i <= TOTAL_FRAMES; i++) {
         const img = new Image();
-        img.src = `/floorplan_frames/ezgif-frame-${String(i).padStart(3, '0')}.jpg`;
+        img.src = `${import.meta.env.BASE_URL}floorplan_frames/ezgif-frame-${String(i).padStart(3, '0')}.jpg`;
         loaded.push(img);
       }
     }, 100);

@@ -19,7 +19,7 @@ export default function GallerySection({ onOpenBooking }) {
       category: 'Exterior Architecture',
       subtitle: 'Twin Iconic Towers Rising Across 8m Natural Slope',
       description: 'Rising 40 floors in quiet distinction in Hyderabad’s Financial District, featuring double-glazed acoustic elevation.',
-      image: '/amaris_assets/amaris_towers.jpg'
+      image: `${import.meta.env.BASE_URL}amaris_assets/amaris_towers.jpg`
     },
     {
       id: 2,
@@ -28,7 +28,7 @@ export default function GallerySection({ onOpenBooking }) {
       category: 'Luxury Interiors',
       subtitle: 'High-Ceiling Living Spaces with Bottochino Stone',
       description: 'Expansive open-plan living and dining spaces adorned with fine Italian marble and 270° floor-to-ceiling glazing.',
-      image: '/amaris_assets/amaris_opulence.jpg'
+      image: `${import.meta.env.BASE_URL}amaris_assets/amaris_opulence.jpg`
     },
     {
       id: 3,
@@ -37,7 +37,7 @@ export default function GallerySection({ onOpenBooking }) {
       category: 'Clubhouse & Amenities',
       subtitle: 'Exclusive Skyline Deck & Private Gathering Suites',
       description: 'Tranquil evening terrace equipped with artisanal coffee bar, wine tasting lounge, and panoramic skyline vistas.',
-      image: '/amaris_assets/amaris_sky_lounge.jpg'
+      image: `${import.meta.env.BASE_URL}amaris_assets/amaris_sky_lounge.jpg`
     },
     {
       id: 4,
@@ -46,7 +46,7 @@ export default function GallerySection({ onOpenBooking }) {
       category: 'Balcony Sanctuary',
       subtitle: 'Still Water, Soaring Skyline Views',
       description: 'Personal temperature-controlled plunge pools integrated seamlessly into expansive private balcony decks.',
-      image: '/amaris_assets/amaris_plunge_pool.jpg'
+      image: `${import.meta.env.BASE_URL}amaris_assets/amaris_plunge_pool.jpg`
     },
     {
       id: 5,
@@ -55,7 +55,7 @@ export default function GallerySection({ onOpenBooking }) {
       category: 'Crown Elevation',
       subtitle: 'The Crown Jewel of Financial District',
       description: 'Custom bronze-trimmed crown illuminated at night, creating an instantly recognizable skyline beacon.',
-      image: '/amaris_assets/amaris_crown_jewel.png'
+      image: `${import.meta.env.BASE_URL}amaris_assets/amaris_crown_jewel.png`
     },
     {
       id: 6,
