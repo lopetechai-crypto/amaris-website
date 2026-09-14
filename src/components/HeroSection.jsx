@@ -22,7 +22,7 @@ export default function HeroSection({ onOpenBooking }) {
   const TOTAL_FRAMES_SEQ1 = 120;
   const TOTAL_FRAMES_SEQ2 = 120;
   const SEQ1_LIMIT = 0.50; // 50% scroll for 120 seq1 frames, 50% for 120 seq2 frames
-  const LERP_FACTOR = 0.12; // Smooth interpolation speed (lower = smoother, 0.08-0.15 sweet spot)
+  const LERP_FACTOR = 0.08; // Smoother interpolation speed for faster scroll
 
   // Canvas draw with object-fit: cover
   const drawCanvas = useCallback((img) => {
@@ -242,7 +242,7 @@ export default function HeroSection({ onOpenBooking }) {
   const endFadeOpacity = scrollProgress > 0.95 ? Math.max(0, 1 - ((scrollProgress - 0.95) / 0.05)) : 1;
 
   return (
-    <div ref={containerRef} className="relative h-[900vh] bg-[#161210]">
+    <div ref={containerRef} className="relative h-[400vh] bg-[#161210]">
       {/* Sticky Viewport */}
       <div 
         className="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center"

@@ -18,7 +18,7 @@ export default function InteractiveFloorPlans({ onOpenBooking }) {
   const [selectedCategory, setSelectedCategory] = useState('4BHK Royal');
 
   const TOTAL_FRAMES = 120;
-  const LERP_FACTOR = 0.12;
+  const LERP_FACTOR = 0.08;
 
   // Canvas draw with object-fit: cover
   const drawCanvas = useCallback((img) => {
@@ -209,7 +209,7 @@ export default function InteractiveFloorPlans({ onOpenBooking }) {
   });
 
   return (
-    <div ref={containerRef} id="floor-plans" className="relative h-[800vh] bg-[#161210]">
+    <div ref={containerRef} id="floor-plans" className="relative h-[300vh] bg-[#161210]">
       {/* Sticky Viewport */}
       <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-between p-4 sm:p-8">
         <canvas
