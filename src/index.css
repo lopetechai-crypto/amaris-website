@@ -38,7 +38,6 @@ body {
   background-repeat: repeat;
   background-size: 750px auto;
   background-blend-mode: overlay;
-  background-attachment: fixed;
 }
 
 .luxury-pattern-overlay {
@@ -270,11 +269,9 @@ body {
 
 @keyframes shellPulseGlow {
   0%, 100% {
-    box-shadow: 0 0 15px rgba(184, 150, 116, 0.15), inset 0 0 10px rgba(184, 150, 116, 0.05);
     border-color: rgba(184, 150, 116, 0.3);
   }
   50% {
-    box-shadow: 0 0 35px rgba(184, 150, 116, 0.35), inset 0 0 15px rgba(184, 150, 116, 0.15);
     border-color: rgba(216, 199, 181, 0.6);
   }
 }
