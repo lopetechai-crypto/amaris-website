@@ -34,7 +34,7 @@ export default function InteractiveFloorPlans({ onOpenBooking }) {
       canvas.height = h;
     }
 
-    const scale = Math.max(w / img.width, h / img.height);
+    const scale = Math.min(w / img.width, h / img.height);
     const dx = (w - img.width * scale) / 2;
     const dy = (h - img.height * scale) / 2;
 
